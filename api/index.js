@@ -1,13 +1,18 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
+const colors = require("colors");
+const userRoute = require("./routes/user");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
 
-app.get("/", (req, res) => {
-  res.json({ title: "Home page" });
-});
+// connect with db
+const connectedDB = require("./db/connect");
+connectedDB();
+
+// middleware
+app.use("/api/users", userRoute);
 
 // listen app
 app.listen(PORT, () => {
