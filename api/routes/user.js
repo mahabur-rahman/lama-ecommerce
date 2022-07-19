@@ -3,7 +3,7 @@ const router = express.Router();
 const UserModel = require("../models/user.model");
 
 // GET USER
-router.get("/usertest", (req, res) => {});
+router.get("/", (req, res) => {});
 
 // export
 module.exports = router;
