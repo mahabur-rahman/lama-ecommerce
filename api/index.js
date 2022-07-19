@@ -12,6 +12,7 @@ const connectedDB = require("./db/connect");
 connectedDB();
 
 // middleware
+app.use(express.json());
 app.use("/api/users", userRoute);
 
 // listen app
