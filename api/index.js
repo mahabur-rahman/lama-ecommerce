@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const colors = require("colors");
+const authUser = require("./routes/auth.route");
 const userRoute = require("./routes/user");
 
 dotenv.config();
@@ -13,6 +14,7 @@ connectedDB();
 
 // middleware
 app.use(express.json());
+app.use("/api/auth", authUser);
 app.use("/api/users", userRoute);
 
 // listen app
