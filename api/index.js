@@ -2,14 +2,15 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const colors = require("colors");
+const cors = require("cors");
+
+// route
 const authUser = require("./routes/auth.route");
 const userRoute = require("./routes/user");
 const productRoute = require("./routes/product.route");
 const cartRoute = require("./routes/cart.route");
 const orderRoute = require("./routes/order.route");
 const stripeRoute = require("./routes/stripe.route");
-// stripe
-const cors = require("cors");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -19,9 +20,10 @@ const connectedDB = require("./db/connect");
 connectedDB();
 
 // middleware
+app.use(cors());
 app.use(express.json());
 
-app.use(cors());
+// route path
 app.use("/api/auth", authUser);
 app.use("/api/users", userRoute);
 app.use("/api/carts", cartRoute);
