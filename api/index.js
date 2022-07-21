@@ -5,6 +5,7 @@ const colors = require("colors");
 const authUser = require("./routes/auth.route");
 const userRoute = require("./routes/user");
 const productRoute = require("./routes/product.route");
+const cartRoute = require("./routes/cart.route");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -17,6 +18,7 @@ connectedDB();
 app.use(express.json());
 app.use("/api/auth", authUser);
 app.use("/api/users", userRoute);
+app.use("/api/carts", cartRoute);
 app.use("/api/products", productRoute);
 
 // listen app
