@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
-const dotenv = require("dotenv");
 const colors = require("colors");
 const cors = require("cors");
+
+const dotenv = require("dotenv");
+dotenv.config();
+const PORT = process.env.PORT || 5000;
 
 // route
 const authUser = require("./routes/auth.route");
@@ -11,9 +14,6 @@ const productRoute = require("./routes/product.route");
 const cartRoute = require("./routes/cart.route");
 const orderRoute = require("./routes/order.route");
 const stripeRoute = require("./routes/stripe.route");
-
-dotenv.config();
-const PORT = process.env.PORT || 5000;
 
 // connect with db
 const connectedDB = require("./db/connect");
