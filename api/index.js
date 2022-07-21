@@ -8,6 +8,8 @@ const productRoute = require("./routes/product.route");
 const cartRoute = require("./routes/cart.route");
 const orderRoute = require("./routes/order.route");
 const stripeRoute = require("./routes/stripe.route");
+// stripe
+const cors = require("cors");
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
@@ -18,6 +20,8 @@ connectedDB();
 
 // middleware
 app.use(express.json());
+
+app.use(cors());
 app.use("/api/auth", authUser);
 app.use("/api/users", userRoute);
 app.use("/api/carts", cartRoute);
