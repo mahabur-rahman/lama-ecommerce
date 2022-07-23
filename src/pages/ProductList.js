@@ -94,6 +94,7 @@ const ProductList = () => {
       {/* component Invoke */}
 
       <Products cat={cat} filters={filters} sort={sort} />
+
       <NewsLetter />
       <Footer />
     </Container>

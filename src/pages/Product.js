@@ -1,9 +1,13 @@
+import React, { useState, useEffect } from "react";
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import Announcement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/NewsLetter";
+import { useLocation } from "react-router-dom";
+import { publicRequest } from "../publicMethods";
+import axios from "axios";
 
 const Container = styled.div``;
 
@@ -109,6 +113,25 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const productId = location.pathname.split("/")[2];
+  console.log(productId);
+
+  const [singleProduct, setSingleProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get(`/products/find/${productId}`);
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getProduct();
+  }, [productId]);
+
   return (
     <Container>
       <Navbar />
