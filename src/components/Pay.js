@@ -29,7 +29,7 @@ const Payment = () => {
           }
         );
 
-        console.log(res.data);
+        console.log("res data : ", res.data);
         history.push("/success");
       } catch (err) {
         console.log(err);

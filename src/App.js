@@ -19,8 +19,20 @@ const App = () => {
       {/* <Home /> */}
       <Router>
         <Switch>
-          <Route path="/pay" component={Pay} />
-          <Route path="/success" component={SuccessPayment} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/products/:category" component={ProductList} />
+          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/cart" component={Cart} />
+
+          <Route path="/payment">
+            <Pay />
+          </Route>
+
+          <Route exact path="/success">
+            <SuccessPayment />
+          </Route>
+          {/* <Route path="/pay" component={Pay} />
+          <Route path="/success" component={SuccessPayment} /> */}
         </Switch>
       </Router>
     </>
