@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Products = ({ cat, sort, filters }) => {
-  console.log(cat, filters);
+  // console.log(cat, filters);
   // console.log(cat, sort, filters);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -52,7 +52,7 @@ const Products = ({ cat, sort, filters }) => {
   useEffect(() => {
     if (sort === "newest") {
       setFilteredProducts((prev) =>
-        [...prev].sort((a, b) => a.createAt - b.createAt)
+        [...prev].sort((a, b) => a.createdAt - b.createdAt)
       );
     } else if (sort === "asc") {
       setFilteredProducts((prev) => {
