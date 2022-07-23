@@ -114,23 +114,24 @@ const Button = styled.button`
 
 const Product = () => {
   const location = useLocation();
-  const productId = location.pathname.split("/")[2];
-  console.log(productId);
+  const id = location.pathname.split("/")[2];
+  console.log(id);
 
-  const [singleProduct, setSingleProduct] = useState({});
+  const [singleProduct, setSingleProduct] = useState({}); // it would be a null then {}
 
   useEffect(() => {
     const getProduct = async () => {
       try {
-        const res = await publicRequest.get(`/products/find/${productId}`);
+        const res = await publicRequest.get(`/products/find/${id}`);
         console.log(res.data);
+        setSingleProduct(res.data);
       } catch (err) {
         console.log(err);
       }
     };
 
     getProduct();
-  }, [productId]);
+  }, [id]);
 
   return (
     <Container>
@@ -138,24 +139,20 @@ const Product = () => {
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Image src={singleProduct.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>Denim Jumpsuit</Title>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
-          </Desc>
-          <Price>$ 20</Price>
+          <Title>{singleProduct.title}</Title>
+          <Desc>{singleProduct.desc}</Desc>
+          <Price>$ {singleProduct.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black" />
-              <FilterColor color="darkblue" />
-              <FilterColor color="gray" />
+              {singleProduct.color?.map((c) => {
+                return <FilterColor color={c} key={Math.random()} />;
+              })}
+              {/* <FilterColor color="darkblue" />
+              <FilterColor color="gray" /> */}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
