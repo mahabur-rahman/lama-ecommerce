@@ -37,6 +37,7 @@ const ProductList = () => {
     <Container>
       <Navbar />
       <Announcement />
+
       <Title>Dresses</Title>
       <FilterContainer>
         <Filter>
@@ -72,6 +73,9 @@ const ProductList = () => {
           </Select>
         </Filter>
       </FilterContainer>
+
+      {/* component Invoke */}
+
       <Products />
       <NewsLetter />
       <Footer />

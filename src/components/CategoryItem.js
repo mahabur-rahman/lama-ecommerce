@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   flex: 1;
@@ -44,11 +45,16 @@ const CategoryItem = ({ category }) => {
   return (
     <>
       <Container>
-        <Image src={category.img} alt={category.title} />
-        <Info>
-          <Title>{category.title}</Title>
-          <Button>Shop Now</Button>
-        </Info>
+        <Link to={`/products/${category.cat}`}>
+          <Image src={category.img} alt={category.title} />
+          <Info>
+            <Title>{category.title}</Title>
+            <span style={{ color: "white", marginBottom: "1rem" }}>
+              {category.cat}
+            </span>
+            <Button>Shop Now</Button>
+          </Info>
+        </Link>
       </Container>
     </>
   );

@@ -2,7 +2,12 @@ import React from "react";
 // global style
 import "./index.scss";
 // react router dom
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Cart from "./pages/Cart";
 // pages
 import Home from "./pages/Home";
@@ -14,14 +19,18 @@ import Pay from "./components/Pay";
 import SuccessPayment from "./components/Success";
 
 const App = () => {
+  const user = true;
   return (
     <>
       {/* <Home /> */}
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
+
           <Route exact path="/products/:category" component={ProductList} />
+
           <Route exact path="/product/:id" component={Product} />
+
           <Route exact path="/cart" component={Cart} />
 
           <Route path="/payment">
@@ -31,8 +40,15 @@ const App = () => {
           <Route exact path="/success">
             <SuccessPayment />
           </Route>
-          {/* <Route path="/pay" component={Pay} />
-          <Route path="/success" component={SuccessPayment} /> */}
+
+          <Route path="/login">
+            {user ? <Redirect to="/" /> : <Login />}
+            <Login />
+          </Route>
+
+          <Route path="/register">
+            {user ? <Redirect to="/" /> : <Register />}
+          </Route>
         </Switch>
       </Router>
     </>
