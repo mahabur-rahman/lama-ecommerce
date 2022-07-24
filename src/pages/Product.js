@@ -115,15 +115,21 @@ const Button = styled.button`
 const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-  console.log(id);
+  // console.log(id);
 
   const [singleProduct, setSingleProduct] = useState({}); // it would be a null then {}
+  const [quantity, setQuantity] = useState(1);
+
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
+
+  console.log(color, size);
 
   useEffect(() => {
     const getProduct = async () => {
       try {
         const res = await publicRequest.get(`/products/find/${id}`);
-        console.log(res.data);
+        // console.log(res.data);
         setSingleProduct(res.data);
       } catch (err) {
         console.log(err);
@@ -132,6 +138,20 @@ const Product = () => {
 
     getProduct();
   }, [id]);
+
+  // for increase | dec quantity
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  // ADD TO CART
+  const addToCart = () => {
+    // UPDATE CART
+  };
 
   return (
     <Container>
@@ -149,31 +169,45 @@ const Product = () => {
             <Filter>
               <FilterTitle>Color</FilterTitle>
               {singleProduct.color?.map((c) => {
-                return <FilterColor color={c} key={Math.random()} />;
+                return (
+                  <FilterColor
+                    color={c}
+                    key={Math.random()}
+                    onClick={() => setColor(c)}
+                  />
+                );
               })}
               {/* <FilterColor color="darkblue" />
               <FilterColor color="gray" /> */}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {singleProduct.size?.map((s) => {
+                  return <FilterSizeOption key={s}>{s}</FilterSizeOption>;
+                })}
+                {/* <FilterSizeOption>S</FilterSizeOption>
                 <FilterSizeOption>M</FilterSizeOption>
                 <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+                <FilterSizeOption>XL</FilterSizeOption> */}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove style={{ cursor: "pointer" }} />
+              <Remove
+                style={{ cursor: "pointer" }}
+                onClick={() => handleQuantity("dec")}
+              />
 
-              <Amount>1</Amount>
+              <Amount>{quantity}</Amount>
 
-              <Add style={{ cursor: "pointer" }} />
+              <Add
+                style={{ cursor: "pointer" }}
+                onClick={() => handleQuantity("inc")}
+              />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={addToCart}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>
