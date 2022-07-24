@@ -8,6 +8,8 @@ import Newsletter from "../components/NewsLetter";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../publicMethods";
 import axios from "axios";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div``;
 
@@ -125,6 +127,9 @@ const Product = () => {
 
   // console.log(color, size);
 
+  // ###### dispatch an action ######
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -152,6 +157,22 @@ const Product = () => {
   // ADD TO CART
   const addToCart = () => {
     // UPDATE CART
+    dispatch(
+      addProduct({
+        ...singleProduct,
+        quantity,
+        color,
+        size,
+        price: singleProduct.price * quantity,
+      })
+    );
+
+    // dispatch(
+    // addProduct({
+    //   singleProduct,
+    //   quantity,
+    // })
+    // )
   };
 
   return (
