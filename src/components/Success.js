@@ -1,7 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const SuccessPayment = () => {
+  const location = useLocation();
+  console.log(location);
+
   return (
     <>
       <h1> payment Success</h1>
