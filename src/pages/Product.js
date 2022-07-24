@@ -123,7 +123,7 @@ const Product = () => {
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
 
-  console.log(color, size);
+  // console.log(color, size);
 
   useEffect(() => {
     const getProduct = async () => {
@@ -140,6 +140,7 @@ const Product = () => {
   }, [id]);
 
   // for increase | dec quantity
+
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
