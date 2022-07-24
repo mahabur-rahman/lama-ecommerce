@@ -3,6 +3,7 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   height: 60px;
@@ -80,11 +81,17 @@ const Navbar = () => {
           <Logo>LAMA.</Logo>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link to="/register">
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          <Link to="/login">
+            <MenuItem>SIGN IN</MenuItem>
+          </Link>
           <MenuItem>
             <Badge badgeContent={quantity} color="primary">
-              <ShoppingCartOutlined />
+              <Link to="/cart">
+                <ShoppingCartOutlined />
+              </Link>
             </Badge>
           </MenuItem>
         </Right>

@@ -163,7 +163,7 @@ const Product = () => {
         quantity,
         color,
         size,
-        price: singleProduct.price * quantity,
+        // price: singleProduct.price * quantity,
       })
     );
 
