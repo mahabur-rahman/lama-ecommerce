@@ -19,7 +19,7 @@ import Pay from "./components/Pay";
 import SuccessPayment from "./components/Success";
 
 const App = () => {
-  const user = true;
+  const user = false;
   return (
     <>
       {/* <Home /> */}
