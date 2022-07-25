@@ -1,6 +1,7 @@
 import React from "react";
 // global style
 import "./index.scss";
+import { useSelector } from "react-redux";
 // react router dom
 import {
   BrowserRouter as Router,
@@ -19,7 +20,8 @@ import Pay from "./components/Pay";
 import SuccessPayment from "./components/Success";
 
 const App = () => {
-  const user = false;
+  const user = useSelector((state) => state.currentUser);
+
   return (
     <>
       {/* <Home /> */}

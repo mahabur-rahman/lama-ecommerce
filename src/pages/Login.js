@@ -69,7 +69,12 @@ const Login = () => {
 
   const { currentUser, isFetching, error } = useSelector((state) => state.user);
 
-  console.log(currentUser, `error : ${error}`, `isFetching is : ${isFetching}`);
+  // console.log(
+  //   `login page details info in redux : `,
+  //   currentUser,
+  //   `${error}`,
+  //   `${isFetching}`
+  // );
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
