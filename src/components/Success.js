@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const SuccessPayment = () => {
   const location = useLocation();
-  console.log(location);
+  // console.log(location.state.products.products);
 
   return (
     <>
