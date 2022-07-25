@@ -2,3 +2,17 @@
 body {
     background-color: white;
 }
+
+.container {
+    display: flex;
+}
+
+.other {
+    flex: 4;
+    background: rgb(231, 225, 225);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

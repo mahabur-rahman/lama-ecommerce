@@ -2,13 +2,19 @@
 import "./index.scss";
 
 // components
-import Topbar from "./components/Topbar";
+import Topbar from "./components/Topbar/Topbar";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
-    <h1>
+    <>
       <Topbar />
-    </h1>
+
+      <div className="container">
+        <Sidebar />
+        <div className="other">other pages </div>
+      </div>
+    </>
   );
 }
 
