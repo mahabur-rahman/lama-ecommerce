@@ -20,7 +20,7 @@ import Pay from "./components/Pay";
 import SuccessPayment from "./components/Success";
 
 const App = () => {
-  const user = useSelector((state) => state.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <>
