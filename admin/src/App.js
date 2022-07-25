@@ -4,6 +4,8 @@ import "./index.scss";
 // components
 import Topbar from "./components/Topbar/Topbar";
 import Sidebar from "./components/Sidebar/Sidebar";
+// pages
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
 
       <div className="container">
         <Sidebar />
-        <div className="other">other pages </div>
+        <Home />
       </div>
     </>
   );
