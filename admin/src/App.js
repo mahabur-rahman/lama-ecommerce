@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserList from "./pages/UserList/UserList";
 import User from "./pages/User/User";
 import NewUser from "./pages/NewUser/NewUser";
-import { ProductList } from "./pages/ProductList/ProductList";
+import ProductList from "./pages/ProductList/ProductList";
 import Product from "./pages/Product/Product";
 import NewProduct from "./pages/NewProduct/NewProduct";
 
