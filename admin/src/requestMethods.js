@@ -22,7 +22,7 @@ const BASE_URL = "http://localhost:4000/api/";
 const TOKEN = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user)
   .currentUser.accessToken;
 
-console.log(TOKEN);
+// console.log(TOKEN);
 
 export const publicRequest = axios.create({
   baseURL: BASE_URL,
