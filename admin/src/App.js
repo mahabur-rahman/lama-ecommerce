@@ -41,7 +41,7 @@ function App() {
             <Route path="/product/:productId">
               <Product />
             </Route>
-            <Route path="/new-product">
+            <Route path="/newproduct">
               <NewProduct />
             </Route>
           </Switch>
