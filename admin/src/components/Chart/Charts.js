@@ -7,6 +7,7 @@ import {
   XAxis,
   CartesianGrid,
   Tooltip,
+  Legend,
   ResponsiveContainer,
 } from "recharts";
 
@@ -20,7 +21,9 @@ const Charts = ({ title, data, dataKey, grid }) => {
           <Line type="monotone" dataKey={dataKey} stroke="#5550bd" />
 
           <Tooltip />
+
           {grid && <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />}
+          <Legend />
         </LineChart>
       </ResponsiveContainer>
     </div>

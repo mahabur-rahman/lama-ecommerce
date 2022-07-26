@@ -1,3 +1,9 @@
 .home {
     flex: 4;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.homeWidgets {
+    display: flex;
 }

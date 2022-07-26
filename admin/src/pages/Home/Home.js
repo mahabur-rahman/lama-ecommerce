@@ -5,6 +5,8 @@ import "./home.scss";
 import FeaturedInfo from "../../components/FeaturedInfo/FeaturedInfo";
 import Charts from "../../components/Chart/Charts";
 import { userData } from "../../Data/data";
+import WidgetSm from "../../components/WidgetSm/WidgetSm";
+import WidgetLg from "../../components/WidgetLg/WidgetLg";
 
 const Home = () => {
   return (
@@ -16,6 +18,11 @@ const Home = () => {
         grid
         dataKey="Active User"
       />
+
+      <div className="homeWidgets">
+        <WidgetSm />
+        <WidgetLg />
+      </div>
     </div>
   );
 };
