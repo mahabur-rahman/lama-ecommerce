@@ -26,7 +26,7 @@ const FeaturedInfo = () => {
         <h4>Revenue</h4>
         <span className="mr-3 title">{income[1]?.total}</span>
         <span>
-          %{Math.floor(perc)}
+          %{Math.floor(perc)}{" "}
           {perc < 0 ? (
             <ArrowDownward className="featuredIcon negative" />
           ) : (

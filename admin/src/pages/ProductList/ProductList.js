@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 // style
 import "./productList.scss";
 
@@ -5,17 +6,31 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../Data/data";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../redux/apiCalls";
 
 export default function ProductList() {
+  const dispatch = useDispatch();
+
+  // u can check redux devtools
+  const products = useSelector((state) => state.product.products);
+
+  console.log(products);
+
   const [data, setData] = useState(productRows);
 
+  // fetch ALL PRODUCTS
+  useEffect(() => {
+    getProducts(dispatch);
+  }, [dispatch]);
+
+  // handleDelete func
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "_id", headerName: "ID", width: 220 },
     {
       field: "product",
       headerName: "Product",
@@ -24,17 +39,17 @@ export default function ProductList() {
         return (
           <div className="productListItem">
             <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.name}
+            {params.row.title}
           </div>
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 200 },
-    {
-      field: "status",
-      headerName: "Status",
-      width: 120,
-    },
+    { field: "inStock", headerName: "Stock", width: 200 },
+    // {
+    //   field: "status",
+    //   headerName: "Status",
+    //   width: 120,
+    // },
     {
       field: "price",
       headerName: "Price",
@@ -63,7 +78,9 @@ export default function ProductList() {
   return (
     <div className="productList">
       <DataGrid
-        rows={data}
+        // rows={data}
+        rows={products}
+        getRowId={(row) => row._id}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
