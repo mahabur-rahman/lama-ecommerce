@@ -7,7 +7,7 @@ import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../Data/data";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../redux/apiCalls";
+import { deleteProduct, getProducts } from "../../redux/apiCalls";
 
 export default function ProductList() {
   const dispatch = useDispatch();
@@ -15,22 +15,28 @@ export default function ProductList() {
   // u can check redux devtools
   const products = useSelector((state) => state.product.products);
 
-  console.log(products);
+  // console.log(products);
 
   const [data, setData] = useState(productRows);
 
   // fetch ALL PRODUCTS
   useEffect(() => {
+    // call func from api apiCall.js
     getProducts(dispatch);
   }, [dispatch]);
 
   // handleDelete func
+
+  // const handleDelete = (id) => {
+  //   setData(data.filter((item) => item.id !== id));
+  // };
+
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    deleteProduct(id, dispatch);
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 220 },
+    { field: "_id", headerName: "ID", width: 220 }, // In DB (id : _id)
     {
       field: "product",
       headerName: "Product",
@@ -44,7 +50,8 @@ export default function ProductList() {
         );
       },
     },
-    { field: "inStock", headerName: "Stock", width: 200 },
+    { field: "inStock", headerName: "Stock", width: 200 }, // In DB (stock : inStock)
+
     // {
     //   field: "status",
     //   headerName: "Status",
@@ -80,7 +87,7 @@ export default function ProductList() {
       <DataGrid
         // rows={data}
         rows={products}
-        getRowId={(row) => row._id}
+        getRowId={(row) => row._id} // it will be add after fetching data
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
