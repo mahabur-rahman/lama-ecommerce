@@ -60,22 +60,7 @@ router.get("/find/:id", verifyTokenAndAdmin, async (req, res) => {
 });
 
 // ######### GET ALL USER #########
-// router.get("/", verifyTokenAndAdmin, async (req, res) => {
-//   const query = req.query.new;
-
-//   //   console.log(query);
-//   try {
-//     const users = query
-//       ? await UserModel.find().sort({ _id: -1 }).limit(5)
-//       : await UserModel.find();
-
-//     return res.status(200).json(users);
-//   } catch (err) {
-//     return res.status(500).json(err);
-//   }
-// });
-
-router.get("/", async (req, res) => {
+router.get("/", verifyTokenAndAdmin, async (req, res) => {
   const query = req.query.new;
 
   //   console.log(query);
@@ -89,6 +74,21 @@ router.get("/", async (req, res) => {
     return res.status(500).json(err);
   }
 });
+
+// router.get("/", async (req, res) => {
+//   const query = req.query.new;
+
+//   //   console.log(query);
+//   try {
+//     const users = query
+//       ? await UserModel.find().sort({ _id: -1 }).limit(5)
+//       : await UserModel.find();
+
+//     return res.status(200).json(users);
+//   } catch (err) {
+//     return res.status(500).json(err);
+//   }
+// });
 
 // ######### GET USER STATS #########
 router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
