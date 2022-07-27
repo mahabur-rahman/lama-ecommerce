@@ -35,8 +35,8 @@ export const productSlice = createSlice({
     deleteProductSuccess: (state, action) => {
       state.isFetching = false;
       state.products.splice(
-        state.products.findIndex((item) => item._id === action.payload.id),
-        1
+        state.products.findIndex((item) => item._id === action.payload),
+        1 // 1 means 1 item delete
       );
     },
     deleteProductFailure: (state) => {

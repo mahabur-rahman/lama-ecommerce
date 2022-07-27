@@ -33,6 +33,7 @@ export default function ProductList() {
 
   const handleDelete = (id) => {
     deleteProduct(id, dispatch);
+    // run time delete so again call getProduct()
     getProducts(dispatch);
   };
 
