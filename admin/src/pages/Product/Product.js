@@ -14,7 +14,7 @@ export default function Product() {
     state.product.products.find((product) => product._id === productId)
   );
 
-  console.log(product);
+  // console.log(product);
 
   return (
     <div className="product">
