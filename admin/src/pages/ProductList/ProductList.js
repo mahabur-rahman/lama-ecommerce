@@ -33,6 +33,7 @@ export default function ProductList() {
 
   const handleDelete = (id) => {
     deleteProduct(id, dispatch);
+    getProducts(dispatch);
   };
 
   const columns = [
